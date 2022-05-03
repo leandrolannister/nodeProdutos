@@ -1,5 +1,5 @@
 const http = require('http');
-const home_html = `<html><body><h1>Welcome to home</h1></body></html>`;
+const home_html = `<html><body><h1>Welcome to home </h1></body></html>`;
 const produtos_html = `<html><body><h2>Lista de Produtos</h2></body></html>`;
 
 const server = http.createServer((req,res) => {
