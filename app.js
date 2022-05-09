@@ -1,9 +1,9 @@
-const express = require('express');
-const app = express();
-const produtos_html = `<html><body><h2>Lista de Produtos</h2></body></html>`;
+const app = require('express')();
+
+app.set('view engine','ejs');
 
 app.get('/produtos', (req,res) => {
-    res.send(produtos_html);
+    res.render("produtos/lista");
 });
 
 app.listen(3000, () => {
