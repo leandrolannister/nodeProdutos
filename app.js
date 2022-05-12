@@ -1,10 +1,7 @@
-const app = require('express')();
+const app = require('./app/config/express.js');
+const produtosRoute = require('./app/routes/produtos.js');
 
-app.set('view engine','ejs');
-
-app.get('/produtos', (req,res) => {
-    res.render("produtos/lista");
-});
+app.use('/produtos', produtosRoute);
 
 app.listen(3000, () => {
     console.log('Server is running');
