@@ -9,13 +9,19 @@
     </head>
     <table>
       <tr>
-        <td>id</td>
-        <td>nome</td>
+        <td>Id</td>
+        <td>Titulo</td>
+        <td>Descrição</td>
+        <td>Preço</td>
       </tr>
-      <tr>
-        <td>3</td>
-        <td>livro de node js</td>
-      </tr>
+      <% for(let row in livros){ %>
+        <tr>
+          <td><%=livros[row].id%></td>  
+          <td><%=livros[row].titulo%></td> 
+          <td><%=livros[row].descricao%></td>
+          <td><%=livros[row].preco%></td>  
+        </tr>    
+      <% } %>  
     </table>
   </body>
 </html>

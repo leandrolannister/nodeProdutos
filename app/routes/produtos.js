@@ -1,13 +1,11 @@
 const route = require('express').Router();
-const connection = require('../infra/connection.js');
+const Livro = require('../class/Livro.js');
 
 route.get('/', (req,res) => {
-    connection.query("select * from livros", (error,data) => {
-      res.send(data);
-    });
+    const livro = new Livro();
 
-    //res.render("produtos/lista");
+    livro.all()
+    .then(data => res.render('produtos/lista',{ livros:data }))      
+    .catch(error => res.send(error));
 });
-
 module.exports = route;
-
