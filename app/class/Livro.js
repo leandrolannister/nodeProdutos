@@ -1,16 +1,11 @@
-const connection = require('../infra/connection.js');
+const Model = require('../model/Livro.js');
 
 class Livro{
 
   all(){
-    return new Promise((resolve,reject) => {
-      connection.query('SELECT * FROM livros',(error,data) => {
-        if (error)
-          reject(error);
-
-        resolve(data);  
-      });
-    });  
+    return Model.all()
+    .then(data => data)
+    .catch(error => error);    
   }
 }
 module.exports = Livro;
