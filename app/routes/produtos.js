@@ -8,4 +8,9 @@ route.get('/', (req,res) => {
     .then(data => res.render('produtos/lista',{ livros:data }))      
     .catch(error => res.send(error));
 });
+
+route.get('/form', (req,res) => {
+    res.render('produtos/form')
+});
+
 module.exports = route;
