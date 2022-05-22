@@ -1,5 +1,12 @@
 const app = require('./app/config/express.js');
 const produtosRoute = require('./app/routes/produtos.js');
+const bodyparse = require('body-parser');
+
+//To form
+app.use(bodyparse.urlencoded({extended:true}));
+
+//To api
+app.use(bodyparse.json({extended:true}));
 
 app.use('/produtos', produtosRoute);
 
