@@ -14,12 +14,7 @@ module.exports = {
   store(livro){
     return new Promise((resolve,reject) => {
       connection.query(
-        `INSERT INTO LIVROS(titulo,preco,descricao)VALUES(?,?,?)`,
-        [
-          livro.titulo,
-          livro.preco,
-          livro.descricao
-        ],
+        `INSERT INTO LIVROS SET ?`,[livro],
         (error) => {
           if (error)
             reject(`Erro cadastro livro ${this.livro}`)
