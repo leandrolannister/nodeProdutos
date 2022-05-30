@@ -1,4 +1,5 @@
 const route = require('express').Router();
+const { json } = require('express/lib/response');
 const Livro = require('../class/Livro.js');
 
 route.get('/', (req,res) => {    
@@ -13,7 +14,6 @@ route.get('/', (req,res) => {
      })
   ).catch(error => res.send(error));
 });
-
 
 route.post('/', (req,res) => {
   let livro = new Livro(req.body);
