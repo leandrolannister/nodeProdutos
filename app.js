@@ -6,7 +6,7 @@ const bodyparse = require('body-parser');
 app.use(bodyparse.urlencoded({extended:true}));
 
 //To api
-app.use(bodyparse.json({extended:true}));
+app.use(bodyparse.json());
 
 app.use('/produtos', produtosRoute);
 

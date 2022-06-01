@@ -18,7 +18,8 @@ route.get('/', (req,res) => {
 route.post('/', (req,res) => {
   let livro = new Livro(req.body);
   livro.store()
-  .then(res.redirect('/produtos'))
+  .then(
+      res.redirect('/produtos'))
   .catch(error => res.render('produto/erros', {errors:error}))  
 });
 
