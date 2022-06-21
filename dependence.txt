@@ -1,3 +1,4 @@
 npm install express@4.15.2 --save
 install npm install ejs@2.5.6
 npm install express-load@1.1.15 --save
+npm install nodemon@2.0.26 --save-dev
