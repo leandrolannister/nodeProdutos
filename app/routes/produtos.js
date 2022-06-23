@@ -16,22 +16,36 @@ route.get('/', (req,res) => {
 });
 
 route.post('/',[
-   body('titulo').notEmpty().withMessage('Informe um valor para titulo')
+   body('titulo').notEmpty().withMessage('Informe um valor para titulo'),
+   body('titulo').isLength({min:2}).withMessage('Informe um titulo com três caracteres'),
+   body('preco').notEmpty().withMessage('Informe um preço'),
+   body('preco').custom(preco => {
+      if (!Number(preco))
+        throw Error("Preço deve ser um tipo númerico");        
+      return true;  
+   })
+
 ],(req,res) => {
 
   const errors = validationResult(req);
-
+  errosValidacao = errors.array();
+  
   if (!errors.isEmpty())
-    res.redirect('/produtos/form');
+    res.format({
+      html: () => {
+        res.render('produtos/form', {errosValidacao:errosValidacao})
+      } 
+    });
+    
   
   let livro = new Livro(req.body);
   livro.store().then(
-      res.redirect('/produtos'))
-  .catch(error => res.render('produto/erros', {errors:error}))  
+    res.redirect('/produtos'))
+    .catch(error => res.render('produto/erros', {errosValidacao:errors.array()}))  
 });
 
-route.get('/form', (req,res) => {
-  res.render('produtos/form')
+route.get('/form', (req,res) => {   
+  res.render('produtos/form', {errosValidacao:{}})
 });
 
 
