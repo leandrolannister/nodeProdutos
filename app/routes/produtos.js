@@ -28,12 +28,16 @@ route.post('/',[
 ],(req,res) => {
 
   const errors = validationResult(req);
-  errosValidacao = errors.array();
+  const errosValidacao = errors.array();
+  const produto = req.body; 
   
   if (!errors.isEmpty())
     res.format({
       html: () => {
-        res.render('produtos/form', {errosValidacao:errosValidacao})
+        res.render('produtos/form', {
+          errosValidacao:errosValidacao,
+          produto:produto
+        })
       } 
     });
     
@@ -45,7 +49,7 @@ route.post('/',[
 });
 
 route.get('/form', (req,res) => {   
-  res.render('produtos/form', {errosValidacao:{}})
+  res.render('produtos/form', {errosValidacao:{},produto:{}})
 });
 
 
