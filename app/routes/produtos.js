@@ -30,17 +30,24 @@ route.post('/',[
   const errors = validationResult(req);
   const errosValidacao = errors.array();
   const produto = req.body; 
-  
-  if (!errors.isEmpty())
+
+    
+  let header = req.header('Accept');
+ 
+  if (!errors.isEmpty()){
+    
+    if (header == 'application/json')  
+      res.status(400).json(errosValidacao);
+
     res.format({
       html: () => {
         res.render('produtos/form', {
           errosValidacao:errosValidacao,
           produto:produto
         })
-      } 
-    });
-    
+      }
+    });  
+  } 
   
   let livro = new Livro(req.body);
   livro.store().then(
