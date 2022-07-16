@@ -57,6 +57,7 @@ route.post('/',[
 
 route.get('/form', (req,res) => {   
   res.render('produtos/form', {errosValidacao:{},produto:{}})
+ 
 });
 
 
