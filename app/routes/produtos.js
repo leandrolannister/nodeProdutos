@@ -60,5 +60,15 @@ route.get('/form', (req,res) => {
  
 });
 
+route.get('/promocoes/form', (req,res) => {   
+  Livro.all().then(data =>     
+    res.render('promocoes/form',{ lista:data }
+    ).catch(error => res.send(error)) )
+});
+
+route.post('/promocoes', (req,res) => {   
+   res.send(req.body);   
+});
+
 
 module.exports = route;
