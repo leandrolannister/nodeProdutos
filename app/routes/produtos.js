@@ -67,7 +67,11 @@ route.get('/promocoes/form', (req,res) => {
 });
 
 route.post('/promocoes', (req,res) => {   
-   res.send(req.body);   
+   const promocao = req.body;  
+   const app = require('../config/express.js');
+   
+   app.get('io').emit('novaPromocao',promocao)
+   res.redirect('/produtos');
 });
 
 
