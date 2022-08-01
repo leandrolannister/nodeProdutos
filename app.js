@@ -3,12 +3,14 @@ const bodyparse = require('body-parser');
 
 const homeRoute = require('./app/routes/home.js');
 const produtosRoute = require('./app/routes/produtos.js');
+const userRoute = require('./app/routes/user.js');
 
 app.use(bodyparse.urlencoded({extended:true})); //To form
 app.use(bodyparse.json()); //To api
 
 app.use('/', homeRoute);
 app.use('/produtos', produtosRoute);
+app.use('/users', userRoute);
 
 //Exemplo de middleware, quando a rota não existe
 app.use((req,res,next) => {
